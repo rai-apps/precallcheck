@@ -2,101 +2,268 @@
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
-  <title>PreCallCheck</title>
+  <title>PreCallCheck — check your call devices before a meeting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PreCallCheck is a small Windows utility for checking your camera, microphone, and speakers before joining a call.">
+
   <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6778;
+      --border: #d9e0ea;
+      --accent: #1f6feb;
+      --accent-hover: #1557bd;
+      --warning-bg: #fff8dc;
+      --warning-border: #e3b341;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
       line-height: 1.5;
-      color: #222;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 24px 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 12px 30px rgba(20, 35, 60, 0.08);
     }
 
     h1 {
-      font-size: 2.4rem;
-      margin-bottom: 0.2em;
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin: 36px 0 12px;
+      font-size: 1.55rem;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0 0 16px;
     }
 
     .tagline {
-      font-size: 1.25rem;
-      color: #555;
+      max-width: 760px;
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      color: var(--muted);
+    }
+
+    .intro {
+      max-width: 760px;
+      font-size: 1.05rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
     }
 
     .button {
       display: inline-block;
-      margin: 20px 0;
-      padding: 12px 18px;
-      background: #1f6feb;
-      color: white;
+      padding: 13px 20px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #ffffff;
       text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
+      font-weight: 700;
+      border: 1px solid var(--accent);
+    }
+
+    .button:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    .secondary-link {
+      display: inline-block;
+      padding: 13px 0;
+      color: var(--accent);
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .secondary-link:hover {
+      text-decoration: underline;
     }
 
     .note {
-      background: #fff8dc;
-      padding: 12px 16px;
-      border-left: 4px solid #e3b341;
-      margin: 20px 0;
+      margin: 28px 0;
+      padding: 14px 16px;
+      background: var(--warning-bg);
+      border-left: 5px solid var(--warning-border);
+      border-radius: 8px;
     }
 
-    img {
-      max-width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+    .screenshot {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 10px 28px rgba(20, 35, 60, 0.12);
+    }
+
+    .caption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .feature {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #ffffff;
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
     }
 
     footer {
       margin-top: 40px;
+      color: var(--muted);
       font-size: 0.9rem;
-      color: #666;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 24px 16px 40px;
+      }
+
+      .card {
+        padding: 24px 18px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>PreCallCheck</h1>
+  <main class="page">
+    <section class="hero card">
+      <div>
+        <h1>PreCallCheck</h1>
 
-  <p class="tagline">
-    Check your camera, microphone, and speakers before joining a call.
-  </p>
+        <p class="tagline">
+          Check your camera, microphone, and speakers before joining a call.
+        </p>
 
-  <p>
-    PreCallCheck is a small Windows utility that helps you confirm your call
-    devices are working before you join a meeting.
-  </p>
+        <p class="intro">
+          PreCallCheck is a small Windows utility that helps you confirm your call
+          devices are working before you join a meeting.
+        </p>
 
-  <p>
-    <a class="button" href="https://github.com/rai-apps/precallcheck/releases/latest">
-      Download for Windows
-    </a>
-  </p>
+        <div class="actions">
+          <a class="button" href="https://github.com/rai-apps/precallcheck/releases/latest">
+            Download for Windows
+          </a>
 
-  <div class="note">
-    Early beta/shareware release. Please report bugs or unusual device behaviour.
-  </div>
+          <a class="secondary-link" href="mailto:info@rai-software.com">
+            Send feedback
+          </a>
+        </div>
 
-  <h2>Screenshot</h2>
-  <img src="screenshot.png" alt="Screenshot of PreCallCheck">
+        <div class="note">
+          Early beta/shareware release. Please report bugs or unusual device behaviour.
+        </div>
+      </div>
 
-  <p>
-    PreCallCheck lets you test your camera, microphone, and speakers before joining a call.
-  </p>
+      <div>
+        <img class="screenshot" src="screenshot.png" alt="Screenshot of PreCallCheck showing camera, microphone, and speaker checks">
+        <p class="caption">
+          PreCallCheck gives you a quick local view of your camera, selected microphone, selected speakers, and Windows default devices.
+        </p>
+      </div>
+    </section>
 
-  <h2>Privacy</h2>
-  <p>
-    PreCallCheck uses your local Windows camera, microphone, and speaker devices
-    for testing. It does not upload or record audio or video.
-  </p>
+    <section>
+      <h2>What it does</h2>
 
-  <h2>Contact</h2>
-  <p>
-    Feedback: <a href="mailto:info@rai-software.com">info@rai-software.com</a>
-  </p>
+      <div class="features">
+        <div class="feature">
+          <strong>Camera check</strong>
+          <p>Preview your webcam before joining a call.</p>
+        </div>
 
-  <footer>
-    Copyright © R.A.I. Ltd.
-  </footer>
+        <div class="feature">
+          <strong>Microphone check</strong>
+          <p>See the selected input device and current input level.</p>
+        </div>
+
+        <div class="feature">
+          <strong>Speaker check</strong>
+          <p>Review output devices and Windows default audio settings.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Privacy</h2>
+
+      <p>
+        PreCallCheck uses your local Windows camera, microphone, and speaker devices
+        for testing. It does not upload or record audio or video.
+      </p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+
+      <p>
+        Feedback, bug reports, and early user comments are welcome:
+        <a href="mailto:info@rai-software.com">info@rai-software.com</a>
+      </p>
+    </section>
+
+    <footer>
+      Copyright © R.A.I. Ltd.
+    </footer>
+  </main>
 </body>
 </html>
