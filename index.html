@@ -2,9 +2,9 @@
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
-  <title>PreCallCheck — check your call devices before a meeting</title>
+  <title>PreCallCheck — one place to check your call devices</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="PreCallCheck is a small Windows utility for checking your camera, microphone, and speakers before joining a call.">
+  <meta name="description" content="PreCallCheck is a small Windows utility that brings camera, microphone, speaker, and default device checks together in one place before a call.">
 
   <style>
     :root {
@@ -117,7 +117,7 @@
     }
 
     .note {
-      margin: 28px 0;
+      margin: 28px 0 0;
       padding: 14px 16px;
       background: var(--warning-bg);
       border-left: 5px solid var(--warning-border);
@@ -162,6 +162,18 @@
       color: var(--muted);
     }
 
+    .section-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-top: 24px;
+    }
+
+    .section-card h2:first-child {
+      margin-top: 0;
+    }
+
     footer {
       margin-top: 40px;
       color: var(--muted);
@@ -173,7 +185,8 @@
         padding: 24px 16px 40px;
       }
 
-      .card {
+      .card,
+      .section-card {
         padding: 24px 18px;
       }
 
@@ -191,12 +204,13 @@
         <h1>PreCallCheck</h1>
 
         <p class="tagline">
-          Check your camera, microphone, and speakers before joining a call.
+          One place to check your camera, microphone, and speakers before a call.
         </p>
 
         <p class="intro">
-          PreCallCheck is a small Windows utility that helps you confirm your call
-          devices are working before you join a meeting.
+          Windows can check these things, but not in one simple place. PreCallCheck brings
+          your camera preview, microphone level, speaker output, and default device checks
+          together in a single small utility before you join a meeting.
         </p>
 
         <div class="actions">
@@ -217,12 +231,23 @@
       <div>
         <img class="screenshot" src="screenshot.png" alt="Screenshot of PreCallCheck showing camera, microphone, and speaker checks">
         <p class="caption">
-          PreCallCheck gives you a quick local view of your camera, selected microphone, selected speakers, and Windows default devices.
+          PreCallCheck gives you a quick local view of your camera, selected microphone,
+          selected speakers, and Windows default devices.
         </p>
       </div>
     </section>
 
-    <section>
+    <section class="section-card">
+      <h2>Why PreCallCheck?</h2>
+
+      <p>
+        Before a call, you should not have to dig through several Windows 11 settings
+        screens just to check your webcam, microphone, speaker output, and default
+        devices. PreCallCheck is designed to make that quick and obvious.
+      </p>
+    </section>
+
+    <section class="section-card">
       <h2>What it does</h2>
 
       <div class="features">
@@ -243,7 +268,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="section-card">
       <h2>Privacy</h2>
 
       <p>
@@ -252,7 +277,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="section-card">
       <h2>Contact</h2>
 
       <p>
